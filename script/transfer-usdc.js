@@ -1,3 +1,6 @@
+const Web3 = require('web3')
+const web3 = new Web3('https://ropsten.infura.io/v3/e62a60a251c64745baefeaf8237af646')
+
 async function transferUsdc(token) {
   let receiver = document.getElementById("receiver").value;
   let amount = document.getElementById("amount").value;
