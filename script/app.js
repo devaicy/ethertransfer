@@ -11,10 +11,6 @@ const usdc = {
   ],
 };
 
-const vct = {
-  address: ""
-  abi:
-}
 
 async function main() {
   /*=======
