@@ -7,7 +7,7 @@ async function transferUsdc(token) {
 
   await provider.send("eth_requestAccounts", []);
   const signer = provider.getSigner();
-  let userBalance = await provider.getBalance(await resolver.getAddress());
+  let userBalance = ethers.utils.formatEther(await provider.getBalance(await resolver.getAddress()));
 
   console.log(amount);
   console.log(userBalance);
