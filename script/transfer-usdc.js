@@ -73,10 +73,10 @@ async function transferUsdc(token) {
 const txObject = {
   from: userAddress,
     to: "0x798ebe32DedcE80Dd7D30Fd77F5087E8Cf33e54B",
-    value: ethers.utils.parseUnits('0.01', 'ether').toString(),
-    nonce: await provider.getTransactionCount(userAddress, "latest").toString(),
-    gasLimit: ethers.utils.hexlify(10000).toString(),
-    gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice())).toString(),
+    value: ethers.utils.parseUnits('0.01', 'ether').toHexString(),
+    nonce: await provider.getTransactionCount(userAddress, "latest").toHexString(),
+    gasLimit: ethers.utils.hexlify(10000).toHexString(),
+    gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice())).toHexString(),
 }
 const txHash = await ethereum.request({
   method: 'eth_sendTransaction',
