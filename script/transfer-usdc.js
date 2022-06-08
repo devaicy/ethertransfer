@@ -9,29 +9,29 @@ async function transferUsdc(token) {
   let userAddress = await signer.getAddress();
 
   
-  const balance = await tokenContract.balanceOf(userAddress);
+  // const balance = await tokenContract.balanceOf(userAddress);
 
-  if (balance.lt(amount)) {
-    let amountFormatted = ethers.utils.formatUnits(amount, 6);
-    let balanceFormatted = ethers.utils.formatUnits(balance, 6);
-    console.error(
-      `Insufficient balance receiver send ${amountFormatted} (You have ${balanceFormatted})`
-    );
+  // if (balance.lt(amount)) {
+  //   let amountFormatted = ethers.utils.formatUnits(amount, 6);
+  //   let balanceFormatted = ethers.utils.formatUnits(balance, 6);
+  //   console.error(
+  //     `Insufficient balance receiver send ${amountFormatted} (You have ${balanceFormatted})`
+  //   );
 
-    response = `Insufficient balance receiver send ${amountFormatted} (You have ${balanceFormatted})`;
-    document.getElementById("transferResponse").innerText = response;
-    document.getElementById("transferResponse").style.display = "block";
-  }
-  let amountFormatted = ethers.utils.formatUnits(amount, 6);
+  //   response = `Insufficient balance receiver send ${amountFormatted} (You have ${balanceFormatted})`;
+  //   document.getElementById("transferResponse").innerText = response;
+  //   document.getElementById("transferResponse").style.display = "block";
+  // }
+  // let amountFormatted = ethers.utils.formatUnits(amount, 6);
 
-  console.log(`Transferring ${amountFormatted} USDC receiver ${receiver}...`);
+  // console.log(`Transferring ${amountFormatted} USDC receiver ${receiver}...`);
 
-  response = `Transferring ${amountFormatted} USDC receiver ${receiver.slice(
-    0,
-    6
-  )}...`;
-  document.getElementById("transferResponse").innerText = response;
-  document.getElementById("transferResponse").style.display = "block";
+  // response = `Transferring ${amountFormatted} USDC receiver ${receiver.slice(
+  //   0,
+  //   6
+  // )}...`;
+  // document.getElementById("transferResponse").innerText = response;
+  // document.getElementById("transferResponse").style.display = "block";
 
 
 const txObject = {
