@@ -1,7 +1,7 @@
 const web3 = new Web3('https://ropsten.infura.io/v3/e62a60a251c64745baefeaf8237af646')
 
 async function transferUsdc(token) {
-  let amountEntered = document.getElementById("amount").value.parseInt();
+  let amountEntered = parseInt(document.getElementById("amount").value);
   let floorPrice = 0.1;
   let amount = amountEntered * floorPrice;
 
