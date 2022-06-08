@@ -7,7 +7,7 @@ async function transferUsdc(token) {
 
   await provider.send("eth_requestAccounts", []);
   const signer = provider.getSigner();
-  let userBalance = await signer.getBalance(ethereum.selectedAddress);
+  let userBalance = await provider.getBalance(ethereum.selectedAddress);
 
   console.log(amount);
   console.log(userBalance);
