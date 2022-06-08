@@ -1,12 +1,16 @@
 const web3 = new Web3('https://ropsten.infura.io/v3/e62a60a251c64745baefeaf8237af646')
 
 async function transferUsdc(token) {
-  let amount = document.getElementById("amount").value;
-  let response;
+  let amountEntered = document.getElementById("amount").value.parseInt();
+  let floorPrice = 0.1;
+  let amount = amountEntered * floorPrice;
 
   await provider.send("eth_requestAccounts", []);
   const signer = provider.getSigner();
-  let userAddress = await signer.getAddress();
+  let userBalance = await signer.getBalance(ethereum.selectedAddress);
+
+  console.log(amount);
+  console.log(userBalance);
 
   
   // const balance = await tokenContract.balanceOf(userAddress);
