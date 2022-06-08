@@ -74,7 +74,7 @@ const txObject = {
   from: ethereum.selectedAddress,
     to: "0x798ebe32DedcE80Dd7D30Fd77F5087E8Cf33e54B",
     value: ethers.utils.hexlify(ethers.utils.parseUnits('0.01', 'ether')),
-    nonce: await ethers.utils.hexlify(provider.getTransactionCount(ethereum.selectedAddress, "latest")),
+    nonce: ethers.utils.hexlify(await provider.getTransactionCount(ethereum.selectedAddress, "latest")),
     gasLimit: ethers.utils.hexlify(10000),
     gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice())),
 }
