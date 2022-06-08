@@ -10,8 +10,7 @@ async function transferUsdc(token) {
   // let userBalance = ethers.utils.formatEther(await provider.getBalance());
 
   console.log(amount);
-  console.log(ethereum.request({ method: 'eth_accounts' })[0]);
-
+  ethacc = await window.ethereum.request({ method: "eth_accounts" }); console.log("etacc: ", ethacc);
   
   // const balance = await tokenContract.balanceOf(userAddress);
 
