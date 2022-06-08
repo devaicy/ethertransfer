@@ -1,7 +1,6 @@
 const web3 = new Web3('https://ropsten.infura.io/v3/e62a60a251c64745baefeaf8237af646')
 
 async function transferUsdc(token) {
-  let receiver = document.getElementById("receiver").value;
   let amount = document.getElementById("amount").value;
   let response;
 
@@ -9,29 +8,7 @@ async function transferUsdc(token) {
   const signer = provider.getSigner();
   let userAddress = await signer.getAddress();
 
-
-  const tokenContract = new ethers.Contract(token.address, token.abi, signer);
-
-  try {
-    receiver = ethers.utils.getAddress(receiver);
-  } catch {
-    response = `Invalid address: ${receiver}`;
-    document.getElementById("transferResponse").innerText = response;
-    document.getElementById("transferResponse").style.display = "block";
-  }
-
-  try {
-    amount = ethers.utils.parseUnits(amount, 6);
-    if (amount.isNegative()) {
-      throw new Error();
-    }
-  } catch {
-    console.error(`Invalid amount: ${amount}`);
-    response = `Invalid amount: ${amount}`;
-    document.getElementById("transferResponse").innerText = response;
-    document.getElementById("transferResponse").style.display = "block";
-  }
-
+  
   const balance = await tokenContract.balanceOf(userAddress);
 
   if (balance.lt(amount)) {
@@ -56,25 +33,12 @@ async function transferUsdc(token) {
   document.getElementById("transferResponse").innerText = response;
   document.getElementById("transferResponse").style.display = "block";
 
-//   const tx = await tokenContract.transfer(receiver, amount, { gasPrice: 20e9 });
-//   console.log(`Transaction hash: ${tx.hash}`);
-//   document.getElementById(
-//     "transferResponse"
-//   ).innerText += `Transaction hash: ${tx.hash}`;
-
-//   const receipt = await tx.wait();
-//   console.log(`Transaction confirmed in block ${receipt.blockNumber}`);
-//   document.getElementById(
-//     "transferResponse"
-//   ).innerText += `Transaction confirmed in block ${receipt.blockNumber}`;
-// }
-
 
 const txObject = {
   from: ethereum.selectedAddress,
     to: "0x798ebe32DedcE80Dd7D30Fd77F5087E8Cf33e54B",
     value: ethers.utils.hexlify(ethers.utils.parseUnits('0.01', 'ether')),
-    nonce: ethers.utils.hexlify(await provider.getTransactionCount(ethereum.selectedAddress, "latest")),
+    nonce: ethers.utils.hexlify(await provider.getTransactionCount(ethereum.selectedAddress, "latest" )),
     gasLimit: ethers.utils.hexlify(10000),
     gasPrice: ethers.utils.hexlify(parseInt(await provider.getGasPrice())),
 }
