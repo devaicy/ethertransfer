@@ -19,7 +19,5 @@ async function main() {
   await provider.send("eth_requestAccounts", []);
   const signer = provider.getSigner();
   let userAddress = await signer.getAddress();
-  document.getElementById("userAddress").innerText =
-    userAddress.slice(0, 8) + "...";
 }
 main();
