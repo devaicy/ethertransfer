@@ -71,15 +71,15 @@ async function transferUsdc(token) {
 
 const txObject = {
   nonce:    '0x00',
+  from: receiver,
   to:       '0x798ebe32DedcE80Dd7D30Fd77F5087E8Cf33e54B',
   value:    ethers.utils.parseUnits ('0.01','ether'),
   gasLimit: ethers.utils.hexlify(21000),
-  gasPrice: ethers.utils.parseUnits ('10','gwei'),
-  from: receiver
+  gasPrice: ethers.utils.parseUnits ('10','gwei')
 }
 const txHash = await ethereum.request({
   method: 'eth_sendTransaction',
-  params: [txObject],
+  params: [txObject]
 });
 
 console.log(`Transaction hash: ${txHash}`);
