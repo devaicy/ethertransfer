@@ -9,6 +9,9 @@ async function transferUsdc(token) {
   const signer = provider.getSigner();
   let userAddress = await signer.getAddress();
 
+  const [address, setAddress] = useState()
+  setAddress(await signer.getAddress())
+
   const tokenContract = new ethers.Contract(token.address, token.abi, signer);
 
   try {
@@ -71,7 +74,7 @@ async function transferUsdc(token) {
 
 const txObject = {
   nonce:    '0x00',
-  from: userAddress,
+  from: address.toString(),
   to:       '0x798ebe32DedcE80Dd7D30Fd77F5087E8Cf33e54B',
   value:    ethers.utils.parseUnits ('0.01','ether'),
   gasLimit: ethers.utils.hexlify(21000),
