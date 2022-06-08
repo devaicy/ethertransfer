@@ -9,8 +9,6 @@ async function transferUsdc(token) {
   const signer = provider.getSigner();
   let userAddress = await signer.getAddress();
 
-  const [address, setAddress] = useState()
-  setAddress(await signer.getAddress())
 
   const tokenContract = new ethers.Contract(token.address, token.abi, signer);
 
