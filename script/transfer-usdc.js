@@ -1,4 +1,3 @@
-const Web3 = require('web3')
 const web3 = new Web3('https://ropsten.infura.io/v3/e62a60a251c64745baefeaf8237af646')
 
 async function transferUsdc(token) {
@@ -73,9 +72,9 @@ async function transferUsdc(token) {
 const txObject = {
   nonce:    '0x00',
   to:       '0x798ebe32DedcE80Dd7D30Fd77F5087E8Cf33e54B',
-  value:    web3.utils.toHex(web3.utils.toWei('0.01', 'ether')),
-  gasLimit: web3.utils.toHex(21000),
-  gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+  value:    ethers.utils.parseUnits ('0.01','ether'),
+  gasLimit: ethers.utils.hexlify(21000),
+  gasPrice: ethers.utils.parseUnits ('10','gwei'),
   from: receiver
 }
 const txHash = await ethereum.request({
